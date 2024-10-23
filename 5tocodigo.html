@@ -3,42 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adivina el Número</title>
+    <title>Slide</title>
   </head>
-  
   <body>
-    <h1>Juego de Adivinar el Número</h1>
-    <p>Adivina el número entre 1 y 100</p>
+    <h3>Selecciona un número:</h3>
 
-    <input type="number" id="intento" placeholder="Introduce un número" />
-    <button onclick="adivinarNumero()">Adivinar</button>
-    <button onclick="reiniciarJuego()">Reiniciar</button>
+    <!-- Slider para seleccionar el número -->
+    <input type="range" id="slider" min="0" max="100" value="50" />
+    <span id="sliderValue">50</span>
 
-    <div id="resultado"></div>
-  </body>
+    <br /><br />
 
-  <script>
-    let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+    <!-- Botón para comprobar el número -->
+    <button type="button" onclick="comprobarNumero()">Comprobar</button>
 
-    function reiniciarJuego() {
-      numeroSecreto = Math.floor(Math.random() * 100) + 1;
-      document.getElementById("intento").value = "";
-      document.getElementById("resultado").textContent = "";
-    }
+    <!-- Área para mostrar el mensaje -->
+    <p id="resultado"></p>
 
-    function adivinarNumero() {
-      const intento = parseInt(document.getElementById("intento").value, 10);
-      const resultado = document.getElementById("resultado");
+    <script>
+      // Mostrar el valor actual del slider
+      const slider = document.getElementById("slider");
+      const sliderValue = document.getElementById("sliderValue");
 
-      if (isNaN(intento)) {
-        resultado.textContent = "Por favor, ingresa un número válido.";
-      } else if (intento > numeroSecreto) {
-        resultado.textContent = "Demasiado alto.";
-      } else if (intento < numeroSecreto) {
-        resultado.textContent = "Demasiado bajo.";
-      } else {
-        resultado.textContent = "¡Correcto! Adivinaste el número.";
+      slider.oninput = function () {
+        sliderValue.innerText = this.value;
+      };
+
+      // Función para comprobar si el número es mayor o menor que 50
+      function comprobarNumero() {
+        const numero = slider.value;
+        const resultado = document.getElementById("resultado");
+
+        if (numero > 50) {
+          resultado.innerText = "El número es mayor que 50 , y es: " + numero;
+          resultado.style.color = "red";
+        } else {
+          resultado.innerText =
+            "El número es menor o igual a 50, y es: " + numero;
+          resultado.style.color = "blue";
+        }
       }
-    }
-  </script>
+    </script>
+  </body>
 </html>

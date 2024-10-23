@@ -3,46 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slide</title>
+    <title>Calculadora Simple</title>
   </head>
+
   <body>
-    <h3>Selecciona un número:</h3>
-
-    <!-- Slider para seleccionar el número -->
-    <input type="range" id="slider" min="0" max="100" value="50" />
-    <span id="sliderValue">50</span>
-
-    <br /><br />
-
-    <!-- Botón para comprobar el número -->
-    <button type="button" onclick="comprobarNumero()">Comprobar</button>
-
-    <!-- Área para mostrar el mensaje -->
-    <p id="resultado"></p>
-
-    <script>
-      // Mostrar el valor actual del slider
-      const slider = document.getElementById("slider");
-      const sliderValue = document.getElementById("sliderValue");
-
-      slider.oninput = function () {
-        sliderValue.innerText = this.value;
-      };
-
-      // Función para comprobar si el número es mayor o menor que 50
-      function comprobarNumero() {
-        const numero = slider.value;
-        const resultado = document.getElementById("resultado");
-
-        if (numero > 50) {
-          resultado.innerText = "El número es mayor que 50 , y es: " + numero;
-          resultado.style.color = "red";
-        } else {
-          resultado.innerText =
-            "El número es menor o igual a 50, y es: " + numero;
-          resultado.style.color = "blue";
-        }
-      }
-    </script>
+    <h1>Calculadora Simple</h1>
+    <button onclick="calcular()">Calcular</button>
   </body>
+
+  <script>
+    function calcular() {
+      const numero1 = parseFloat(prompt("Introduce el primer número:"));
+      const numero2 = parseFloat(prompt("Introduce el segundo número:"));
+      const operacion = prompt(
+        "¿Qué operación quieres realizar? (+, -, *, /):"
+      );
+
+      let resultado;
+      if (operacion === "+") {
+        resultado = numero1 + numero2;
+      } else if (operacion === "-") {
+        resultado = numero1 - numero2;
+      } else if (operacion === "*") {
+        resultado = numero1 * numero2;
+      } else if (operacion === "/") {
+        resultado = numero1 / numero2;
+      } else {
+        alert("Operación no válida.");
+        return;
+      }
+      alert(`El resultado es: ${resultado}`);
+    }
+  </script>
 </html>
