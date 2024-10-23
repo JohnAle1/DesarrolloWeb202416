@@ -1,48 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slide</title>
-  </head>
-  <body>
-    <h3>Selecciona un número:</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Biografía</title>
+</head>
+<body>
 
-    <!-- Slider para seleccionar el número -->
-    <input type="range" id="slider" min="0" max="100" value="50" />
-    <span id="sliderValue">50</span>
+    <h1>Mi Nombre</h1>
+    <h2>Desarrollador en Formación</h2>
+    <p>Hola, soy estudiante de programación y estoy aprendiendo HTML, CSS y JavaScript. Me encanta el desarrollo web y estoy emocionado por seguir aprendiendo más.</p>
 
-    <br /><br />
+    <h3>Datos personales</h3>
+    <table style="border: 1px solid black;">
+        <tr>
+            <th>Nombre completo</th>
+            <td>Juan Pérez</td>
+        </tr>
+        <tr>
+            <th>Edad</th>
+            <td>25 años</td>
+        </tr>
+        <tr>
+            <th>Ciudad</th>
+            <td>Quito, Ecuador</td>
+        </tr>
+        <tr>
+            <th>Correo electrónico</th>
+            <td>juanperez@example.com</td>
+        </tr>
+    </table>
 
-    <!-- Botón para comprobar el número -->
-    <button type="button" onclick="comprobarNumero()">Comprobar</button>
+    <h3>Mis Hobbies</h3>
+    <ul>
+        <li>Leer libros de ciencia ficción y fantasía</li>
+        <li>Ver películas de acción y drama</li>
+        <li>Jugar videojuegos de estrategia y aventura</li>
+        <li>Practicar deportes como el fútbol y el tenis</li>
+        <li>Viajar y conocer nuevas culturas</li>
+    </ul>
 
-    <!-- Área para mostrar el mensaje -->
-    <p id="resultado"></p>
+    <h3>Una imagen importante para mí</h3>
+    <img src="" alt="Imagen representativa" />
 
-    <script>
-      // Mostrar el valor actual del slider
-      const slider = document.getElementById("slider");
-      const sliderValue = document.getElementById("sliderValue");
+    <h3>Mis habilidades</h3>
+    <table style="border: 1px solid black;">
+        <tr>
+            <th>Habilidad</th>
+            <th>Nivel</th>
+        </tr>
+        <tr>
+            <td>HTML</td>
+            <td>Avanzado</td>
+        </tr>
+        <tr>
+            <td>CSS</td>
+            <td>Intermedio</td>
+        </tr>
+        <tr>
+            <td>JavaScript</td>
+            <td>Intermedio</td>
+        </tr>
+        <tr>
+            <td>Python</td>
+            <td>Básico</td>
+        </tr>
+    </table>
 
-      slider.oninput = function () {
-        sliderValue.innerText = this.value;
-      };
+    <h3>Proyectos destacados</h3>
+    <ul>
+        <li>Desarrollo de una calculadora web con JavaScript.</li>
+        <li>Creador de un blog personal utilizando HTML y CSS.</li>
+        <li>Proyecto de análisis de datos usando Python y Pandas.</li>
+    </ul>
 
-      // Función para comprobar si el número es mayor o menor que 50
-      function comprobarNumero() {
-        const numero = slider.value;
-        const resultado = document.getElementById("resultado");
+    <h3>Contacto</h3>
+    <form action="#" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre"><br><br>
 
-        if (numero > 50) {
-          resultado.innerText = "El número es mayor que 50 , y es: " + numero;
-          resultado.style.color = "red";
-        } else {
-          resultado.innerText =
-            "El número es menor o igual a 50, y es: " + numero;
-          resultado.style.color = "blue";
-        }
-      }
-    </script>
-  </body>
+        <label for="email">Correo electrónico:</label><br>
+        <input type="email" id="email" name="email" placeholder="Tu correo"><br><br>
+
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
 </html>

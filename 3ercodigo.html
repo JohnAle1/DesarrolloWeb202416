@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simple</title>
+    <script>
+        function calcular() {
+            const numero1 = parseFloat(prompt("Introduce el primer número:"));
+            const numero2 = parseFloat(prompt("Introduce el segundo número:"));
+            const operacion = prompt("¿Qué operación quieres realizar? (+, -, *, /):");
+            
+            let resultado;
+            if (operacion === '+') {
+                resultado = numero1 + numero2;
+            } else if (operacion === '-') {
+                resultado = numero1 - numero2;
+            } else if (operacion === '*') {
+                resultado = numero1 * numero2;
+            } else if (operacion === '/') {
+                resultado = numero1 / numero2;
+            } else {
+                alert("Operación no válida.");
+                return;
+            }
+            alert(`El resultado es: ${resultado}`);
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora Simple</h1>
+    <button onclick="calcular()">Calcular</button>
+</body>
+</html>
