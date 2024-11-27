@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login con Simulador de Crédito</title>
+    <style>
+      /* Estilos generales */
+      body,
+      html {
+        display: flex;
+        background-color: coral;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Contenedor principal */
+      .login-container {
+        background-color: white;
+        padding: 20px;
+      }
+
+      /* Estilos del login */
+      .login-image {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 10px;
+      }
+
+      .login-image img {
+        width: 100px;
+        height: 80px;
+      }
+
+      .login-form {
+        text-align: center;
+      }
+
+      .login-form h2 {
+        text-align: center;
+        color: #333;
+        margin: 0 0 15px;
+      }
+
+      .login-form input {
+        margin: 8px 0;
+        padding: 10px;
+        width: 80%;
+      }
+
+      .login-form button {
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        width: 85%;
+      }
+
+      /* Sección de ejercicios */
+      .extra-exercises {
+        display: flex;
+
+        margin-top: 15px;
+      }
+
+      /* Simulador de crédito */
+      .simulador {
+        width: 500px;
+        display: block;
+        background-color: #e8e8e8;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .simulador input {
+        padding: 8px;
+        width: 90%;
+      }
+
+      .simulador button {
+        padding: 10px;
+        font-size: 14px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 50%;
+      }
+
+      /* Cuadro de Ejercicio 2 */
+      .exercise-box {
+        background-color: #e8e8e8;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 0.9em;
+        color: #333;
+        text-align: center;
+      }
+      .div-contaier-exc {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- División para la imagen -->
+      <div class="login-image">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/019/872/884/non_2x/3d-minimal-user-login-page-user-authentication-concept-user-verification-concept-login-page-with-a-fingerprint-padlock-3d-illustration-free-png.png"
+          alt="Login Image"
+        />
+      </div>
+
+      <!-- Login Formulario -->
+      <div class="login-form">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="username" placeholder="Usuario" required />
+        <input
+          type="password"
+          id="password"
+          placeholder="Contraseña"
+          required
+        />
+        <button onclick="validateLogin()">Ingresar</button>
+      </div>
+
+      <!-- Sección de ejercicios 1 -->
+      <div class="extra-exercises">
+        <!-- Simulador de Crédito en Ejercicio 1 -->
+        <div class="simulador">
+          <h2>Ejercicio 1 - Simulador crédito</h2>
+          <div class="div-contaier-exc">
+            <label for="monto">Monto de Inversión:</label>
+            <input
+              type="number"
+              id="monto"
+              placeholder="Monto de inversión"
+              required
+            />
+          </div>
+          <div class="div-contaier-exc">
+            <label for="tasa">Tasa de Interés (%):</label>
+            <input
+              type="number"
+              id="tasa"
+              placeholder="Tasa de interés anual"
+              required
+            />
+          </div>
+          <div class="div-contaier-exc">
+            <button onclick="calcularInversion()">Calcular</button>
+          </div>
+          <div class="div-contaier-exc">
+            <label for="resultado">Total después de un año:</label>
+            <input
+              type="text"
+              id="resultado"
+              placeholder="Resultado"
+              readonly
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de ejercicios 2 -->
+      <div class="extra-exercises">
+        <!-- PPT -->
+        <div class="simulador">
+          <div class="container">
+            <h2>Ejercicio 2 - Piedra, Papel o Tijera</h2>
+            <div class="div-contaier-exc">
+              <input
+                type="text"
+                id="userChoice"
+                placeholder="Ingresa Piedra, Papel o Tijera"
+              />
+            </div>
+            <div class="div-contaier-exc">
+              <button onclick="playGame()">Jugar</button>
+            </div>
+            <div class="div-contaier-exc">
+              <input
+                type="text"
+                id="computerChoice"
+                placeholder="Opción de la computadora"
+                readonly
+              />
+            </div>
+            <div class="div-contaier-exc">
+              <input type="text" id="result" placeholder="Resultado" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript para la funcionalidad -->
+    <script>
+      // Validación de login
+      function validateLogin() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (username === "admin" && password === "admin") {
+          alert("¡Bienvenido, admin!");
+        } else {
+          alert("Usuario o contraseña incorrectos");
+        }
+      }
+
+      // Cálculo del simulador de crédito
+      function calcularInversion() {
+        const monto = parseFloat(document.getElementById("monto").value);
+        const tasa = parseFloat(document.getElementById("tasa").value);
+
+        if (isNaN(monto) || isNaN(tasa)) {
+          alert("Por favor ingrese valores válidos.");
+          return;
+        }
+
+        const total = monto + (monto * tasa) / 100;
+        document.getElementById("resultado").value = total.toFixed(2);
+      }
+
+      /* Piedra papel o tijera*/
+      // Función para jugar el juego
+      function playGame() {
+        const userChoice = document
+          .getElementById("userChoice")
+          .value.toLowerCase()
+          .trim();
+        const choices = ["piedra", "papel", "tijera"];
+
+        // Verifica que la opción ingresada sea válida
+        if (!choices.includes(userChoice)) {
+          alert("Por favor, ingresa 'Piedra', 'Papel' o 'Tijera'.");
+          return;
+        }
+
+        // Genera una elección aleatoria para la computadora
+        const computerChoice =
+          choices[Math.floor(Math.random() * choices.length)];
+
+        // Muestra la elección de la computadora
+        document.getElementById("computerChoice").value =
+          computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+
+        // Determina el resultado del juego
+        let result = "";
+        if (userChoice === computerChoice) {
+          result = "Empate";
+        } else if (
+          (userChoice === "piedra" && computerChoice === "tijera") ||
+          (userChoice === "papel" && computerChoice === "piedra") ||
+          (userChoice === "tijera" && computerChoice === "papel")
+        ) {
+          result = "¡Ganaste!";
+        } else {
+          result = "Perdiste";
+        }
+
+        // Muestra el resultado
+        document.getElementById("result").value = result;
+      }
+    </script>
+  </body>
+</html>
